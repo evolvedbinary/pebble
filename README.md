@@ -29,7 +29,7 @@ The latest reslease version is available for download from https://fusiondb.com.
 * rpmbuild (for building RPM's on Linux)
 * Apple Developer Certificate and Account (for signing DMG's on macOS)
 
-Build the Fusion Studio application (Linux/Mac):
+Build the Fusion Studio application package (for your platform):
 ```bash
 $ git clone https://github.com/evolvedbinary/fusion-studio.git
 $ cd fusion-studio
@@ -60,4 +60,18 @@ $ APPLE_ID=me@something.com APPLE_ID_PASSWORD=abcd-efgh-ijkl-mnop yarn package
 ```
 **NOTE:** The `APPLE_ID` and `APPLE_ID_PASSWORD` are used for notarization of the app. If you don't need notarization you can skip these. Remember, notarization can be a slow process which can take 10+ minutes with little or no output to the console... so remain patient!
 
-Application packages are then available in the `fusion-studio/dist` folder.
+Desktop Applications are then available in the `fusion-studio/dist` folder.
+
+## Building a Release
+
+Release packages are built for Linux, Mac, and Windows platforms.
+
+As code-signing of Mac packages can only be performed on macOS, we assume your starting point is a Mac with Docker installed.
+
+```
+$ git clone https://github.com/evolvedbinary/fusion-studio.git
+$ cd fusion-studio
+$ yarn && yarn build && yarn package
+
+$ docker run -it --volume "$(PWD)":/fusion-studio evolvedbinary/fusion-studio:centos7_x64-be '/bin/bash && cd /fusion-studio && yarn && yarn package'
+```
