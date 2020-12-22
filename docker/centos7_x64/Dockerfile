@@ -18,7 +18,7 @@ RUN sed -i 's/^\(override_install_langs=.*$\)/#\1/' /etc/yum.conf \
   && pip install argparse \
   && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
   && source ~/.bash_profile \
-  && nvm install 14 \
+  && nvm install 12 \
   && npm install -g yarn
 
 ENV LOCALE=en_US.UTF-8
