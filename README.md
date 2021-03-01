@@ -73,5 +73,9 @@ $ git clone https://github.com/evolvedbinary/fusion-studio.git
 $ cd fusion-studio
 $ yarn && yarn build && yarn package
 
-$ docker run -it --volume "$(PWD)":/fusion-studio evolvedbinary/fusion-studio:centos7_x64-be '/bin/bash && cd /fusion-studio && yarn && yarn package'
+$ docker run -ti \
+ --env USER=$UID \
+ --env GROUP=$GID \
+ -v ${PWD}:/project evolvedbinary/fusion-studio:centos7_x64-be \
+ /bin/bash -c "bash /root/build.sh"
 ```
